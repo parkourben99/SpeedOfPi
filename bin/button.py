@@ -1,5 +1,5 @@
 class Button(object):
-    def __init__(self, bus, port):
+    def __init__(self, bus, address, port):
         self.bus = bus
+        self.address = address
         self.port = port
-        self.active = False

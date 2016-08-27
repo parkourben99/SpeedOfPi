@@ -1,16 +1,31 @@
 from bin.button import Button
 from bin.led import Led
+from bin.timer import Timer
 
 
 class Node(object):
-
-    def __init__(self, button_bus, button_port, led_bus, led_port):
-        self.button = self.set_button(button_bus, button_port)
-        self.led = self.set_led(led_bus, led_port)
+    def __init__(self, bus, button_address, button_port, led_address, led_port):
+        self.__bus = bus
+        self.__button = self.__set_button(button_address, button_port)
+        self.__led = self.__set_led(led_address, led_port)
+        self.__timer = Timer()
         self.active = False
 
-    def set_button(self, button_bus, button_port):
-        return Button(button_bus, button_port)
+    def __set_button(self, button_address, button_port):
+        return Button(self.__bus, button_address, button_port)
 
-    def set_led(self, led_bus, led_port):
-        return Led(led_bus, led_port)
+    def __set_led(self, led_address, led_port):
+        return Led(self.__bus, led_address, led_port)
+
+    def activate(self):
+        self.active = True
+
+        self.__timer.start()
+        self.__led.activate()
+
+    def deactivate(self):
+        self.active = False
+        self.__led.deactivate()
+
+        total_time = self.__timer.stop()
+        return total_time
