@@ -9,6 +9,6 @@ setup(name='SpeedOfPi',
       license='MIT',
       packages=['SpeedOfPi'],
       install_requires=[
-          'smbus',
+          'yaml',
       ],
       zip_safe=False)

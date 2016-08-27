@@ -1,3 +1,4 @@
-python:
-    code_rating: true
-    duplicate_code: true
+checks:
+    python:
+        code_rating: true
+        duplicate_code: true
