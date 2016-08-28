@@ -1,18 +1,23 @@
-import os
-import time
 import smbus
-import yaml
 from bin.updater import Updater
+from bin.configure import Configure
 
 
 class SpeedOfPi(object):
-
     def __init__(self):
-        bus = smbus.SMBus(1)
+        self.bus = smbus.SMBus(1)
 
-    def create_nodes(self): pass
+    def create_nodes(self, node_config): pass
 
-    def get_config(self): pass
+    def get_config(self):
+        config = Configure()
+
+        try:
+            node_config = config.get_config()
+            self.create_nodes(node_config)
+        except FileNotFoundError:
+            print("Please set the config")
+            exit()
 
     def set_config(self): pass
 
@@ -20,8 +25,6 @@ class SpeedOfPi(object):
         updater = Updater()
         needs_update = updater.check()
         if needs_update:
-            print("There is an update")
-            print("Downloading update now")
             updater.update()
         else:
             print("You are up to date!")

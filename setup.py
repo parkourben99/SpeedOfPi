@@ -10,5 +10,5 @@ setup(name='SpeedOfPi',
       install_requires=[
           'gitpython',
       ],
-      dependency_links=['http://svn.pyyaml.org/pyyaml/trunk'],
+      dependency_links=['https://bitbucket.org/xi/pyyaml/get/3.11.zip'],
       zip_safe=False)
