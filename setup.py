@@ -7,5 +7,8 @@ setup(name='SpeedOfPi',
       author='Benjamin Ayles',
       author_email='ben@ayles.com.au',
       license='MIT',
+      install_requires=[
+          'gitpython',
+      ],
       dependency_links=['http://svn.pyyaml.org/pyyaml/trunk'],
       zip_safe=False)
