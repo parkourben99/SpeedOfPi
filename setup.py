@@ -7,6 +7,7 @@ setup(name='SpeedOfPi',
       author='Benjamin Ayles',
       author_email='ben@ayles.com.au',
       license='MIT',
+      packages=['SpeedOfPi'],
       install_requires=[
           'gitpython',
       ],

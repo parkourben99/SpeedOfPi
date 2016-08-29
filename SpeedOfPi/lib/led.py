@@ -6,14 +6,14 @@ class Led(object):
         self.active = False
 
     def activate(self):
-        self.toggle(True)
+        self.__toggle(True)
         self.active = True
 
     def deactivate(self):
-        self.toggle(False)
+        self.__toggle(False)
         self.active = False
 
-    def toggle(self, state):
+    def __toggle(self, state):
         state_list = list(bin(self.active)[2:].zfill(8))
 
         state_list[self.port] = int(state)

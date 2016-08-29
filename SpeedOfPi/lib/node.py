@@ -1,6 +1,6 @@
-from bin.button import Button
-from bin.led import Led
-from bin.timer import Timer
+from SpeedOfPi.lib.button import Button
+from SpeedOfPi.lib.led import Led
+from SpeedOfPi.lib.timer import Timer
 
 
 class Node(object):

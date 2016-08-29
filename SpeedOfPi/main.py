@@ -1,6 +1,6 @@
 import smbus
-from bin.updater import Updater
-from bin.configure import Configure
+from SpeedOfPi.lib.updater import Updater
+from SpeedOfPi.lib.configure import Configure
 
 
 class SpeedOfPi(object):
