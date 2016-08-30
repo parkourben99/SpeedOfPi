@@ -1,6 +1,6 @@
 import smbus
-from SpeedOfPi.lib.updater import Updater
-from SpeedOfPi.lib.configure import Configure
+from lib.updater import Updater
+from lib.configure import Configure
 
 
 class SpeedOfPi(object):
@@ -23,8 +23,8 @@ class SpeedOfPi(object):
 
     def update(self):
         updater = Updater()
-        needs_update = updater.check()
-        if needs_update:
+
+        if updater.check():
             updater.update()
         else:
             print("You are up to date!")
@@ -34,4 +34,3 @@ class SpeedOfPi(object):
     def single_player(self): pass
 
     def loop(self): pass
-
