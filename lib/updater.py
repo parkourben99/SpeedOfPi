@@ -6,10 +6,10 @@ class Updater(object):
     def __init__(self):
         self.repo = git.Repo(os.getcwd())
 
-    def check(self):
+    def check(self, branch='origin/master'):
         self.repo.remote().fetch()
 
-        diff = self.repo.index.diff('origin/master')
+        diff = self.repo.index.diff(branch)
         return bool(diff)
 
     def update(self):
