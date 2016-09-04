@@ -6,6 +6,7 @@
 Required:
     Raspberry Pi
     PCF8574 8-bit I/O Expander I2C
+    
 
 The first step is to enable i2c via raspi-config: `sudo raspi-config` , select advance menu, select i2c, then enable it.
 Next install smbus which will control the i2c, `sudo apt-get install python3-smbus`.

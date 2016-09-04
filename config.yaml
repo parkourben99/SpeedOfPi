@@ -1,7 +1,16 @@
-buttons:
-    one : 1
-    two : 2
+nodes:
+  - 1:
+      - button:
+          - address: 45x4
+          - port: 7
+      - led:
+          - address: 21x4
+          - port: 0
+  - 2:
+      - button:
+          - address: 48x4
+          - port: 3
+      - led:
+          - address: 25x4
+          - port: 1
 
-leds:
-    one : 5
-    two : 6
