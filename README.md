@@ -5,6 +5,7 @@
 
 Required:
     Raspberry Pi
+    
     PCF8574 8-bit I/O Expander I2C
     
 
