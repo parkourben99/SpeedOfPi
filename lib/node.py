@@ -4,8 +4,9 @@ from lib.timer import Timer
 
 
 class Node(object):
-    def __init__(self, bus, button_address, button_port, led_address, led_port):
+    def __init__(self, bus, node_number, button_address, button_port, led_address, led_port):
         self.__bus = bus
+        self.id = node_number
         self.__button = self.__set_button(button_address, button_port)
         self.__led = self.__set_led(led_address, led_port)
         self.__timer = Timer()
@@ -21,11 +22,11 @@ class Node(object):
         self.active = True
 
         self.__timer.start()
-        self.__led.activate()
+        # self.__led.activate()
 
     def deactivate(self):
         self.active = False
-        self.__led.deactivate()
+        # self.__led.deactivate()
 
         total_time = self.__timer.stop()
         return total_time

@@ -7,10 +7,10 @@ class Timer(object):
         self.__end_time = 0
 
     def start(self):
-        self.__start_time = time.localtime()
+        self.__start_time = time.time()
 
     def stop(self):
-        self.__end_time = time.localtime()
+        self.__end_time = time.time()
 
         total_time = self.__calc_total_time()
         self.__reset()
@@ -18,7 +18,7 @@ class Timer(object):
         return total_time
 
     def __calc_total_time(self):
-        return self.__start_time - self.__end_time
+        return self.__end_time - self.__start_time
 
     def __reset(self):
         self.__start_time = 0
