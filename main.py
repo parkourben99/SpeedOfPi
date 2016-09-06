@@ -4,6 +4,7 @@ import time
 from lib.updater import Updater
 from lib.configure import Configure
 from lib.node import Node
+from lib.difficulty import Difficulty
 from lib.game import Game
 
 
@@ -43,6 +44,9 @@ class SpeedOfPi(object):
     def set_config(self):
         self.config.set_config()
 
+    def set_difficulty(self):
+        return Difficulty()
+
     def update(self):
         updater = Updater()
 
@@ -52,12 +56,12 @@ class SpeedOfPi(object):
             print("You are up to date!")
 
     def multi_player(self):
-        difficulty = 1
+        difficulty = self.set_difficulty()
         game = Game(difficulty)
         game.multi_player(self.nodes)
 
     def single_player(self):
-        difficulty = 1
+        difficulty = self.set_difficulty()
         game = Game(difficulty)
         game.single_player(self.nodes)
 
