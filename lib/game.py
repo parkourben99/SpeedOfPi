@@ -1,11 +1,13 @@
 import time
 import random
+from lib.scorer import Scorer
 
 
 class Game(object):
     def __init__(self, difficulty):
         self.nodes = {}
         self.difficulty = difficulty
+        self.scorer = Scorer(self.difficulty)
         self.active_nodes = []
 
     def multi_player(self, nodes):

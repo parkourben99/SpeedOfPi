@@ -1,6 +1,4 @@
 #import smbus
-import time
-
 from lib.updater import Updater
 from lib.configure import Configure
 from lib.node import Node
@@ -12,9 +10,9 @@ class SpeedOfPi(object):
     def __init__(self):
         self.bus = '3' #smbus.SMBus(1)
         self.nodes = {}
-
         self.config = Configure()
-        self.load_config()
+        self.updater = None
+        self.difficulty = Difficulty()
 
     def create_nodes(self, node_config):
         for node in node_config['nodes']:
@@ -27,16 +25,11 @@ class SpeedOfPi(object):
 
                 self.nodes[node_number] = Node(self.bus, node_number, button_address, button_port, led_address, led_port)
             except:
-                # throw exception here so user checks config file
-                print('unable to load node ' + node[0])
+                raise Exception("Config is incorrect on {node}".format(node=node[0]))
 
     def load_config(self):
         if not self.config.read_config():
-            print('Could not read file. would you like to setup nodes?')
-            print('Would you like to setup nodes?')
-            #todo expect keyboad input [Y/n] (Y,y, yes, YES, *enter)
-            #if no exit else run set_config()
-            exit()
+            raise Exception('Could not read file')
 
         node_config = self.config.get_config()
         self.create_nodes(node_config)
@@ -44,27 +37,32 @@ class SpeedOfPi(object):
     def set_config(self):
         self.config.set_config()
 
-    def set_difficulty(self):
-        return Difficulty()
+    def set_difficulty(self, level):
+        self.difficulty.set(level)
+
+    def get_difficulties(self):
+        return self.difficulty.all()
+
+    def update_available(self, is_develop=False):
+        self.updater = Updater(is_develop)
+        return self.updater.check()
 
     def update(self):
-        updater = Updater()
+        if not self.updater:
+            self.updater = Updater(False)
 
-        if updater.check():
-            updater.update()
-        else:
-            print("You are up to date!")
+        self.updater.update()
 
     def multi_player(self):
-        difficulty = self.set_difficulty()
-        game = Game(difficulty)
+        if not self.nodes:
+            self.load_config()
+
+        game = Game(self.difficulty)
         game.multi_player(self.nodes)
 
     def single_player(self):
-        difficulty = self.set_difficulty()
-        game = Game(difficulty)
-        game.single_player(self.nodes)
+        if not self.nodes:
+            self.load_config()
 
-if __name__ == '__main__':
-    a = SpeedOfPi()
-    a.single_player()
+        game = Game(self.difficulty)
+        game.single_player(self.nodes)
