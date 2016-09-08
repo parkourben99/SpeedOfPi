@@ -1,6 +1,6 @@
 from tkinter import *
 import time
-from main import SpeedOfPi
+from lib.main import SpeedOfPi
 from tkinter.ttk import *
 
 
