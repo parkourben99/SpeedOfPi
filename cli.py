@@ -1,9 +1,13 @@
 import cmd
 import os
+import argparse
+from lib.main import SpeedOfPi
 
 
 class CLI(cmd.Cmd):
     def __init__(self):
+        self.game = SpeedOfPi()
+        self.update_available = None
         cmd.Cmd.__init__(self)
         os.system('clear')
         self.prompt = "-->>"
@@ -38,6 +42,27 @@ class CLI(cmd.Cmd):
         os.system('clear')
         print(self.intro)
 
+    def do_update(self, args):
+        """check for updates"""
+        if not self.update_available:
+            print("Checking for updates")
+            if not self.update_check():
+                return print("No updates available")
+
+        if not args:
+            self.game.update()
+            print("Updating to latest stable version")
+        else:
+            parser = argparse.ArgumentParser()
+            parser.add_argument(dest="branch")
+
+            output, unknownArgs = parser.parse_known_args(args.split())
+            self.game.update(output.branch)
+            print("Updating to latest beta version")
+
+    def update_check(self, branch=False):
+        self.update_available = self.game.update_available(branch)
+        return self.update_available
 
 if __name__ == '__main__':
     cli = CLI()

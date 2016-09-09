@@ -47,9 +47,9 @@ class SpeedOfPi(object):
         self.updater = Updater(is_develop)
         return self.updater.check()
 
-    def update(self):
+    def update(self, is_develop=False):
         if not self.updater:
-            self.updater = Updater(False)
+            self.updater = Updater(is_develop)
 
         self.updater.update()
 
