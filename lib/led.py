@@ -18,11 +18,6 @@ class Led(object):
 
         state_list[self.port] = state
         state = ''.join(str(e) for e in state_list)
-
-        print(state)
-
         state = int(state, 2)
-
-        print(state)
 
         self.bus.write_byte(self.address, state)
