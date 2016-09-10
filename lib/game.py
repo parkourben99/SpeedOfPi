@@ -15,11 +15,7 @@ class Game(object):
 
     def single_player(self, nodes):
         self.nodes = nodes
-        try:
-            self.game_loop()
-        except Exception:
-            for node in self.nodes:
-                node.deactivate()
+        self.game_loop()
 
     def start_game(self): pass
 
@@ -40,6 +36,8 @@ class Game(object):
                 print(str(node) + ' activated!')
 
                 self.active_nodes.append(node)
+
+                self.nodes[node].deactivate()
             else:
                 print('no nodes left!')
                 # exit()
