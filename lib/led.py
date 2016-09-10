@@ -3,7 +3,7 @@ class Led(object):
         self.bus = bus
         self.address = address
         self.port = port
-        self.active = False
+        self.deactivate()
 
     def activate(self):
         self.__toggle(1)

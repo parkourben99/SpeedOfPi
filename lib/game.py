@@ -39,6 +39,7 @@ class Game(object):
                 time.sleep(3)
 
                 self.nodes[node].deactivate()
+                print(str(node) + ' de-activated!')
             else:
                 print('no nodes left!')
                 # exit()
