@@ -16,7 +16,11 @@ class Led(object):
     def __toggle(self, state):
         state_list = list(bin(self.active)[2:].zfill(8))
 
-        state_list[self.port] = int(state)
+        print(state)
+        print(int(state))
+        print(str(int(state)))
+
+        state_list[self.port] = str(int(state))
         state = ''.join(state_list)
 
         state = int(state, 2)
