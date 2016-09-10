@@ -42,6 +42,9 @@ class CLI(cmd.Cmd):
         os.system('clear')
         print(self.intro)
 
+    def do_single_player(self):
+        self.game.single_player()
+
     def do_update(self, args):
         """check for updates"""
         if not self.update_available:
