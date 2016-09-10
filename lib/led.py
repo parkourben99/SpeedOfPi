@@ -3,6 +3,7 @@ class Led(object):
         self.bus = bus
         self.address = address
         self.port = port
+        self.active = True
         self.deactivate()
 
     def activate(self):

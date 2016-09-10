@@ -2,7 +2,7 @@ nodes:
   - 1:
       - button:
           - address: 0x20
-          - port: 7
+          - port: 5
       - led:
           - address: 0x20
           - port: 7

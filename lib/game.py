@@ -43,6 +43,6 @@ class Game(object):
             else:
                 print('no nodes left!')
                 # exit()
-            time.sleep(0.5)
+            time.sleep(3)
 
 
