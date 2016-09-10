@@ -22,11 +22,11 @@ class Node(object):
         self.active = True
 
         self.__timer.start()
-        # self.__led.activate()
+        self.__led.activate()
 
     def deactivate(self):
         self.active = False
-        # self.__led.deactivate()
+        self.__led.deactivate()
 
         total_time = self.__timer.stop()
         return total_time

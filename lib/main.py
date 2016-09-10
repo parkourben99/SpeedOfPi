@@ -1,4 +1,4 @@
-#import smbus
+import smbus
 from lib.updater import Updater
 from lib.configure import Configure
 from lib.node import Node
@@ -8,7 +8,7 @@ from lib.game import Game
 
 class SpeedOfPi(object):
     def __init__(self):
-        self.bus = '3' #smbus.SMBus(1)
+        self.bus = smbus.SMBus(1)
         self.nodes = {}
         self.config = Configure()
         self.updater = None

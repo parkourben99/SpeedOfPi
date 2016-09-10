@@ -42,7 +42,7 @@ class CLI(cmd.Cmd):
         os.system('clear')
         print(self.intro)
 
-    def do_single_player(self):
+    def do_play(self):
         self.game.single_player()
 
     def do_update(self, args):
