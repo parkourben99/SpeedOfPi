@@ -50,7 +50,8 @@ class CLI(cmd.Cmd):
         if not self.update_available:
             print("Checking for updates")
             if not self.update_check():
-                return print("No updates available")
+                print("No updates available")
+                return
 
         if not args:
             self.game.update()

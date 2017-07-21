@@ -21,4 +21,3 @@ class Configure(object):
 
     def set_config(self):
         self.__config = None
-

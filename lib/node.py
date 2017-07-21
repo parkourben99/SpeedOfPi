@@ -18,6 +18,9 @@ class Node(object):
     def __set_led(self, led_address, led_port):
         return Led(self.__bus, led_address, led_port)
 
+    def get_button(self):
+        return self.__button
+
     def activate(self):
         self.active = True
 
