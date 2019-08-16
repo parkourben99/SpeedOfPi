@@ -5,4 +5,11 @@ nodes:
           - port: 5
       - led:
           - address: 0x20
-          - port: 7
+          - port: 4
+  - 2:
+    - button:
+        - address: 0x20
+        - port: 6
+    - led:
+        - address: 0x20
+        - port: 7

@@ -35,7 +35,7 @@ class Game(object):
                 self.nodes[node].activate()
                 print(str(node) + ' activated!')
 
-                # self.active_nodes.append(node)
+                #self.active_nodes.append(node)
                 time.sleep(3)
 
                 self.nodes[node].deactivate()

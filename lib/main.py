@@ -27,6 +27,11 @@ class SpeedOfPi(object):
             except:
                 raise Exception("Config is incorrect on {node}".format(node=node[0]))
 
+    #     self.nodes_init()
+    #
+    # def nodes_init(self):
+    #     self.bus.write_bt
+
     def load_config(self):
         if not self.config.read_config():
             raise Exception('Could not read file')
@@ -66,3 +71,8 @@ class SpeedOfPi(object):
 
         game = Game(self.difficulty)
         game.single_player(self.nodes)
+
+# todo
+# set all led off when loading the game
+# flash all leds to start the game
+# create wiring map
